@@ -1,0 +1,422 @@
+.
+├── LLM_Service_Backend
+│   ├── Dockerfile
+│   ├── llama3.2-vision:11b
+│   │   └── original
+│   ├── NIST.FIPS.197.pdf
+│   ├── README.md
+│   ├── aws-auth.yaml
+│   ├── docker-compose.yml
+│   ├── llm_pipeline_engine
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── engine.cpython-312.pyc
+│   │   │   ├── engine_builder.cpython-312.pyc
+│   │   │   ├── exceptions.cpython-312.pyc
+│   │   │   └── prompt_service.cpython-312.pyc
+│   │   ├── custom_logging
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── base_logger.cpython-312.pyc
+│   │   │   │   ├── console_logger.cpython-312.pyc
+│   │   │   │   └── logger.cpython-312.pyc
+│   │   │   ├── base_logger.py
+│   │   │   ├── console_logger.py
+│   │   │   └── logger.py
+│   │   ├── engine.py
+│   │   ├── engine_builder.py
+│   │   ├── exceptions.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── base_model_config.cpython-312.pyc
+│   │   │   │   ├── context.cpython-312.pyc
+│   │   │   │   ├── llm_config.cpython-312.pyc
+│   │   │   │   └── prompt.cpython-312.pyc
+│   │   │   ├── base_model_config.py
+│   │   │   ├── context.py
+│   │   │   ├── llm_config.py
+│   │   │   ├── placeholders.py
+│   │   │   └── prompt.py
+│   │   ├── placeholders
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── base_placeholder.cpython-312.pyc
+│   │   │   │   ├── context_placeholder.cpython-312.pyc
+│   │   │   │   └── placeholder_handler.cpython-312.pyc
+│   │   │   ├── base_placeholder.py
+│   │   │   ├── context_placeholder.py
+│   │   │   └── placeholder_handler.py
+│   │   ├── prompt_service.py
+│   │   ├── prompts
+│   │   │   ├── __init__.py
+│   │   │   └── stages
+│   │   │       └── ErrorRecoveryStage.txt
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   └── llm_base_service.cpython-312.pyc
+│   │   │   ├── llm_base_service.py
+│   │   │   └── models
+│   │   │       ├── __pycache__
+│   │   │       │   └── llm_base_model.cpython-312.pyc
+│   │   │       └── llm_base_model.py
+│   │   ├── stages
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   ├── base_end_condition.cpython-312.pyc
+│   │   │   │   ├── base_stage.cpython-312.pyc
+│   │   │   │   ├── end_condition_stage.cpython-312.pyc
+│   │   │   │   ├── error_recovery_stage.cpython-312.pyc
+│   │   │   │   ├── is_validated_end_condition.cpython-312.pyc
+│   │   │   │   ├── prerun_stage.cpython-312.pyc
+│   │   │   │   └── validation_stage.cpython-312.pyc
+│   │   │   ├── base_end_condition.py
+│   │   │   ├── base_stage.py
+│   │   │   ├── end_condition_stage.py
+│   │   │   ├── error_recovery_stage.py
+│   │   │   ├── is_validated_end_condition.py
+│   │   │   ├── prerun
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   └── base_prerun.cpython-312.pyc
+│   │   │   │   └── base_prerun.py
+│   │   │   ├── prerun_stage.py
+│   │   │   └── validation_stage.py
+│   │   └── validators
+│   │       ├── __init__.py
+│   │       ├── __pycache__
+│   │       │   ├── __init__.cpython-312.pyc
+│   │       │   └── base_validator.cpython-312.pyc
+│   │       ├── base_validator.py
+│   │       └── text_validator.py
+│   ├── logs
+│   │   ├── llm-service.log
+│   │   ├── llm-service_20241104_145621.log
+│   │   ├── llm-service_20241104_145752.log
+│   │   ├── llm-service_20241104_145806.log
+│   │   ├── llm-service_20241104_145826.log
+│   │   ├── llm-service_20241104_145841.log
+│   │   ├── llm-service_20241104_145854.log
+│   │   ├── llm-service_20241104_145906.log
+│   │   ├── llm-service_20241104_145949.log
+│   │   ├── llm-service_20241104_150501.log
+│   │   ├── llm-service_20241104_150523.log
+│   │   ├── llm-service_20241104_150551.log
+│   │   ├── llm-service_20241104_150649.log
+│   │   ├── llm-service_20241104_150730.log
+│   │   ├── llm-service_20241104_151120.log
+│   │   ├── llm-service_20241104_151141.log
+│   │   ├── llm-service_20241104_151407.log
+│   │   ├── llm-service_20241104_174855.log
+│   │   ├── llm-service_20241104_174927.log
+│   │   ├── llm-service_20241104_174958.log
+│   │   ├── llm-service_20241104_175125.log
+│   │   ├── llm-service_20241104_175316.log
+│   │   ├── llm-service_20241104_175400.log
+│   │   ├── llm-service_20241104_175422.log
+│   │   ├── llm-service_20241104_175639.log
+│   │   ├── llm-service_20241105_154934.log
+│   │   ├── llm-service_20241108_105638.log
+│   │   ├── llm-service_20241108_115930.log
+│   │   ├── llm-service_20241108_120205.log
+│   │   ├── llm-service_20241108_132800.log
+│   │   ├── llm-service_20241108_132906.log
+│   │   └── llm-service_20241108_133334.log
+│   ├── ollama-admin_accessKeys.csv
+│   ├── ollama-admin_credentials.csv
+│   ├── ollama-backend-key.pem
+│   ├── poetry.lock
+│   ├── poetry.lock.backup
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   └── src
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   └── __init__.cpython-312.pyc
+│       ├── llm_service
+│       │   ├── __init__.py
+│       │   ├── __pycache__
+│       │   │   ├── __init__.cpython-312.pyc
+│       │   │   ├── main.cpython-312.pyc
+│       │   │   └── rmq_handler.cpython-312.pyc
+│       │   ├── custom_logging
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   ├── file_logger.cpython-312.pyc
+│       │   │   │   └── loki_logger.cpython-312.pyc
+│       │   │   ├── file_logger.py
+│       │   │   └── loki_logger.py
+│       │   ├── main.py
+│       │   ├── models
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   └── generator_request.cpython-312.pyc
+│       │   │   └── generator_request.py
+│       │   ├── pipeline_components
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   ├── gemini_service.cpython-312.pyc
+│       │   │   │   ├── ollama_service.cpython-312.pyc
+│       │   │   │   └── openai_service.cpython-312.pyc
+│       │   │   ├── gemini_service.py
+│       │   │   ├── ollama_service.py
+│       │   │   ├── openai_service.py
+│       │   │   └── openai_stage.py
+│       │   ├── rmq_handler.py
+│       │   ├── services
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   └── message_service.cpython-312.pyc
+│       │   │   ├── generators
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   │   ├── heatwAIv_engine.cpython-312.pyc
+│       │   │   │   │   └── test_chunks.cpython-312-pytest-7.4.4.pyc
+│       │   │   │   ├── heatwAIv_engine.py
+│       │   │   │   └── test_chunks.py
+│       │   │   ├── message_service.py
+│       │   │   └── models
+│       │   │       ├── __init__.py
+│       │   │       ├── __pycache__
+│       │   │       │   ├── __init__.cpython-312.pyc
+│       │   │       │   ├── gemini_models.cpython-312.pyc
+│       │   │       │   ├── llama_inference.cpython-312.pyc
+│       │   │       │   ├── ollama_models.cpython-312.pyc
+│       │   │       │   └── openai_models.cpython-312.pyc
+│       │   │       ├── gemini_models.py
+│       │   │       ├── llama_inference.py
+│       │   │       ├── ollama_models.py
+│       │   │       └── openai_models.py
+│       │   ├── stages
+│       │   │   ├── __init__.py
+│       │   │   ├── generate_stage.py
+│       │   │   └── interaction_stage.py
+│       │   └── utils
+│       │       ├── __init__.py
+│       │       └── logging_utils.py
+│       ├── prompts
+│       │   ├── __init__.py
+│       │   ├── error_recovery.txt
+│       │   └── welcome_message.txt
+│       ├── scripts
+│       │   ├── __init__.py
+│       │   ├── clone_crds.py
+│       │   ├── ec2_instance_types_cache.json
+│       │   ├── find_closest_instance.py
+│       │   ├── mariadb_settings_output.txt
+│       │   ├── mariadb_settings_scraper.py
+│       │   ├── ollama-instance.yaml
+│       │   ├── openai_cost_estimator.py
+│       │   ├── precache_data.sh
+│       │   ├── precache_database_types.py
+│       │   ├── precache_instance_types.py
+│       │   ├── precache_rds_engine_versions.py
+│       │   ├── prompt.txt
+│       │   ├── response.txt
+│       │   ├── whitelist_instance_types.json
+│       │   └── whitelist_rds_types.json
+│       └── tests
+│           ├── __init__.py
+│           ├── __pycache__
+│           │   ├── __init__.cpython-312.pyc
+│           │   ├── test_ADC.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_gemini_models.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_gemini_service.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_heatwaiv_engine.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_heatwaiv_engine.cpython-312.pyc
+│           │   ├── test_manifest.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_ollama_models.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_ollama_models.cpython-312.pyc
+│           │   ├── test_openai_service.cpython-312-pytest-7.4.4.pyc
+│           │   └── test_rmq_handler.cpython-312-pytest-7.4.4.pyc
+│           ├── test_ADC.py
+│           ├── test_gemini_models.py
+│           ├── test_gemini_service.py
+│           ├── test_heatwaiv_engine.py
+│           ├── test_manifest.py
+│           ├── test_ollama_models.py
+│           ├── test_openai_service.py
+│           └── test_rmq_handler.py
+├── SocialWellnessApp
+│   ├── Package.resolved
+│   ├── SocialWellnessApp
+│   │   ├── Assets.xcassets
+│   │   │   ├── AccentColor.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── AppIcon.appiconset
+│   │   │   │   └── Contents.json
+│   │   │   ├── Contents.json
+│   │   │   ├── E03B26.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── EF6233.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── F26A21.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── F47D20.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── F78E24.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FAA632.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FBE9C0.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FCDA7B.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FD8235.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FDC14C.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FDD79E.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── FED244.colorset
+│   │   │   │   └── Contents.json
+│   │   │   ├── ai.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── ai.svg
+│   │   │   ├── arrows-sort.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── arrows-sort.svg
+│   │   │   ├── bell.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── bell.svg
+│   │   │   ├── brain.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── brain.svg
+│   │   │   ├── brand-facebook.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── brand-facebook.svg
+│   │   │   ├── brand-meta.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── brand-meta.svg
+│   │   │   ├── brand-twitter.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── brand-twitter.svg
+│   │   │   ├── bulb.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── bulb.svg
+│   │   │   ├── caret-up.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── caret-up.svg
+│   │   │   ├── chart-646.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── chart-646.svg
+│   │   │   ├── heart-handshake.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── heart-handshake.svg
+│   │   │   ├── heart-up.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── heart-up.svg
+│   │   │   ├── menu-2.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── menu-2.svg
+│   │   │   ├── mood-sad-2.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── mood-sad-2.svg
+│   │   │   ├── mood-share.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── mood-share.svg
+│   │   │   ├── quotes.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── quotes.svg
+│   │   │   ├── rollercoaster.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── rollercoaster.svg
+│   │   │   ├── subtask.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── subtask.svg
+│   │   │   ├── thumb-up.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── thumb-up.svg
+│   │   │   ├── tournament.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── tournament.svg
+│   │   │   ├── user-circle.imageset
+│   │   │   │   ├── Contents.json
+│   │   │   │   └── user-circle.svg
+│   │   │   └── zoom-pan.imageset
+│   │   │       ├── Contents.json
+│   │   │       └── zoom-pan.svg
+│   │   ├── ContentView.swift
+│   │   ├── Extensions
+│   │   │   └── Color+Custom.swift
+│   │   ├── Models
+│   │   │   ├── Insight.swift
+│   │   │   ├── MenuItem.swift
+│   │   │   ├── ScheduledPost.swift
+│   │   │   ├── SocialAccount.swift
+│   │   │   └── UserMetrics.swift
+│   │   ├── Preview Content
+│   │   │   └── Preview Assets.xcassets
+│   │   │       └── Contents.json
+│   │   ├── Services
+│   │   │   ├── APIClient.swift
+│   │   │   └── GPT4oMiniService.swift
+│   │   ├── SocialWellnessAppApp.swift
+│   │   ├── ViewModels
+│   │   │   ├── DashboardViewModel.swift
+│   │   │   ├── InsightsViewModel.swift
+│   │   │   └── SocialAccountsViewModel.swift
+│   │   ├── Views
+│   │   │   ├── AccountSetupView.swift
+│   │   │   ├── AnalyticsView.swift
+│   │   │   ├── CalendarView.swift
+│   │   │   ├── ChatView.swift
+│   │   │   ├── ChatViewModel.swift
+│   │   │   ├── Components
+│   │   │   │   ├── DrawerView.swift
+│   │   │   │   ├── FloatingActionButton.swift
+│   │   │   │   ├── MenuButton.swift
+│   │   │   │   ├── MetricTile.swift
+│   │   │   │   ├── ProfileButton.swift
+│   │   │   │   ├── QuickActionButton.swift
+│   │   │   │   └── SocialLoginButton.swift
+│   │   │   ├── ContentPlannerView.swift
+│   │   │   ├── CreatePostView.swift
+│   │   │   ├── DashboardView.swift
+│   │   │   ├── Insights.swift
+│   │   │   ├── InsightsFeedView.swift
+│   │   │   ├── LoginView.swift
+│   │   │   ├── PermissionsRequestView.swift
+│   │   │   ├── RegistrationView.swift
+│   │   │   ├── SettingsView.swift
+│   │   │   ├── SocialAccountsView.swift
+│   │   │   ├── WelcomeView.swift
+│   │   │   └── WellbeingView.swift
+│   │   └── gpt-access.txt
+│   ├── SocialWellnessApp.xcodeproj
+│   │   ├── project.pbxproj
+│   │   ├── project.xcworkspace
+│   │   │   ├── contents.xcworkspacedata
+│   │   │   ├── xcshareddata
+│   │   │   │   └── swiftpm
+│   │   │   │       └── configuration
+│   │   │   └── xcuserdata
+│   │   │       └── abrahamreines.xcuserdatad
+│   │   │           └── UserInterfaceState.xcuserstate
+│   │   └── xcuserdata
+│   │       └── abrahamreines.xcuserdatad
+│   │           └── xcschemes
+│   │               └── xcschememanagement.plist
+│   ├── SocialWellnessAppTests
+│   │   └── SocialWellnessAppTests.swift
+│   ├── SocialWellnessAppUITests
+│   │   ├── SocialWellnessAppUITests.swift
+│   │   └── SocialWellnessAppUITestsLaunchTests.swift
+│   └── Sources
+│       └── App
+│           ├── Controllers
+│           └── configure.swift
+└── tree.txt
+
+109 directories, 311 files
