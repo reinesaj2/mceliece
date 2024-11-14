@@ -1,11 +1,14 @@
 .
 ├── LLM_Service_Backend
-│   ├── Dockerfile
-│   ├── llama3.2-vision:11b
+│   ├── Dockerfile.web
+│   ├── Dockerfile.worker
+│   ├── Llama-3.2-3B-Instruct
 │   │   └── original
 │   ├── NIST.FIPS.197.pdf
 │   ├── README.md
+│   ├── alembic.ini
 │   ├── aws-auth.yaml
+│   ├── dependencies.txt
 │   ├── docker-compose.yml
 │   ├── llm_pipeline_engine
 │   │   ├── __init__.py
@@ -127,14 +130,106 @@
 │   │   ├── llm-service_20241108_120205.log
 │   │   ├── llm-service_20241108_132800.log
 │   │   ├── llm-service_20241108_132906.log
-│   │   └── llm-service_20241108_133334.log
+│   │   ├── llm-service_20241108_133334.log
+│   │   ├── llm-service_20241109_223340.log
+│   │   ├── llm-service_20241109_233107.log
+│   │   ├── llm-service_20241109_233527.log
+│   │   ├── llm-service_20241110_104446.log
+│   │   ├── llm-service_20241110_111325.log
+│   │   ├── llm-service_20241110_113412.log
+│   │   ├── llm-service_20241110_115228.log
+│   │   ├── llm-service_20241110_121808.log
+│   │   ├── llm-service_20241110_121951.log
+│   │   ├── llm-service_20241110_122201.log
+│   │   ├── llm-service_20241110_123926.log
+│   │   ├── llm-service_20241110_124032.log
+│   │   ├── llm-service_20241110_124504.log
+│   │   ├── llm-service_20241110_130222.log
+│   │   ├── llm-service_20241110_131753.log
+│   │   ├── llm-service_20241110_132231.log
+│   │   ├── llm-service_20241110_133049.log
+│   │   ├── llm-service_20241110_145056.log
+│   │   ├── llm-service_20241110_145447.log
+│   │   ├── llm-service_20241110_161803.log
+│   │   ├── llm-service_20241110_164054.log
+│   │   ├── llm-service_20241110_164132.log
+│   │   ├── llm-service_20241110_164423.log
+│   │   ├── llm-service_20241110_164715.log
+│   │   ├── llm-service_20241110_170005.log
+│   │   ├── llm-service_20241110_170422.log
+│   │   ├── llm-service_20241111_102446.log
+│   │   ├── llm-service_20241111_103002.log
+│   │   ├── llm-service_20241111_103312.log
+│   │   ├── llm-service_20241111_103544.log
+│   │   ├── llm-service_20241111_103831.log
+│   │   ├── llm-service_20241111_104323.log
+│   │   ├── llm-service_20241112_081149.log
+│   │   ├── llm-service_20241112_081248.log
+│   │   ├── llm-service_20241112_082112.log
+│   │   ├── llm-service_20241112_082347.log
+│   │   ├── llm-service_20241112_083331.log
+│   │   ├── llm-service_20241112_084019.log
+│   │   ├── llm-service_20241112_084507.log
+│   │   ├── llm-service_20241112_084953.log
+│   │   ├── llm-service_20241112_085201.log
+│   │   ├── llm-service_20241112_095419.log
+│   │   ├── llm-service_20241112_095837.log
+│   │   ├── llm-service_20241112_100302.log
+│   │   ├── llm-service_20241112_102346.log
+│   │   ├── llm-service_20241112_102442.log
+│   │   ├── llm-service_20241112_103100.log
+│   │   ├── llm-service_20241112_104114.log
+│   │   ├── llm-service_20241112_104246.log
+│   │   ├── llm-service_20241112_112829.log
+│   │   ├── llm-service_20241112_113148.log
+│   │   ├── llm-service_20241112_113535.log
+│   │   ├── llm-service_20241112_114039.log
+│   │   ├── llm-service_20241112_114814.log
+│   │   ├── llm-service_20241112_124300.log
+│   │   ├── llm-service_20241112_142254.log
+│   │   ├── llm-service_20241112_175737.log
+│   │   ├── llm-service_20241113_080519.log
+│   │   ├── llm-service_20241113_082934.log
+│   │   ├── llm-service_20241113_083031.log
+│   │   ├── llm-service_20241113_083054.log
+│   │   ├── llm-service_20241113_083124.log
+│   │   ├── llm-service_20241113_110841.log
+│   │   ├── llm-service_20241113_110907.log
+│   │   ├── llm-service_20241113_110915.log
+│   │   ├── llm-service_20241113_112159.log
+│   │   ├── llm-service_20241113_112633.log
+│   │   ├── llm-service_20241113_113550.log
+│   │   ├── llm-service_20241113_113613.log
+│   │   ├── llm-service_20241113_113650.log
+│   │   ├── llm-service_20241113_113755.log
+│   │   ├── llm-service_20241113_114000.log
+│   │   ├── llm-service_20241113_114106.log
+│   │   ├── llm-service_20241113_114136.log
+│   │   ├── llm-service_20241113_114211.log
+│   │   ├── llm-service_20241113_114215.log
+│   │   ├── llm-service_20241113_114246.log
+│   │   ├── llm-service_20241113_115302.log
+│   │   ├── llm-service_20241113_115337.log
+│   │   ├── llm-service_20241113_115434.log
+│   │   ├── llm-service_20241113_115458.log
+│   │   ├── llm-service_20241113_120054.log
+│   │   └── llm-service_20241113_120628.log
+│   ├── migrations
+│   │   ├── README
+│   │   ├── __pycache__
+│   │   │   └── env.cpython-312.pyc
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 65560c0c464e_create_initial_tables.py
+│   │       └── __pycache__
+│   │           └── 65560c0c464e_create_initial_tables.cpython-312.pyc
 │   ├── ollama-admin_accessKeys.csv
 │   ├── ollama-admin_credentials.csv
-│   ├── ollama-backend-key.pem
 │   ├── poetry.lock
-│   ├── poetry.lock.backup
 │   ├── pyproject.toml
 │   ├── requirements.txt
+│   ├── runtime.txt
 │   └── src
 │       ├── __init__.py
 │       ├── __pycache__
@@ -143,8 +238,12 @@
 │       │   ├── __init__.py
 │       │   ├── __pycache__
 │       │   │   ├── __init__.cpython-312.pyc
+│       │   │   ├── celery_app.cpython-312.pyc
+│       │   │   ├── celery_worker.cpython-312.pyc
 │       │   │   ├── main.cpython-312.pyc
-│       │   │   └── rmq_handler.cpython-312.pyc
+│       │   │   ├── rmq_handler.cpython-312.pyc
+│       │   │   ├── tasks.cpython-312.pyc
+│       │   │   └── worker.cpython-312.pyc
 │       │   ├── custom_logging
 │       │   │   ├── __init__.py
 │       │   │   ├── __pycache__
@@ -158,7 +257,41 @@
 │       │   │   ├── __init__.py
 │       │   │   ├── __pycache__
 │       │   │   │   ├── __init__.cpython-312.pyc
-│       │   │   │   └── generator_request.cpython-312.pyc
+│       │   │   │   ├── database.cpython-312.pyc
+│       │   │   │   ├── generator_request.cpython-312.pyc
+│       │   │   │   └── result.cpython-312.pyc
+│       │   │   ├── database
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── __init__.cpython-312.pyc
+│       │   │   │   │   ├── analytics_data.cpython-312.pyc
+│       │   │   │   │   ├── chat_history.cpython-312.pyc
+│       │   │   │   │   ├── database.cpython-312.pyc
+│       │   │   │   │   ├── educational_resource.cpython-312.pyc
+│       │   │   │   │   ├── global_trends.cpython-312.pyc
+│       │   │   │   │   ├── goal.cpython-312.pyc
+│       │   │   │   │   ├── mood_entry.cpython-312.pyc
+│       │   │   │   │   ├── notifications.cpython-312.pyc
+│       │   │   │   │   ├── post.cpython-312.pyc
+│       │   │   │   │   ├── result.cpython-312.pyc
+│       │   │   │   │   ├── screen_time_data.cpython-312.pyc
+│       │   │   │   │   ├── settings.cpython-312.pyc
+│       │   │   │   │   ├── social_media_account.cpython-312.pyc
+│       │   │   │   │   └── user.cpython-312.pyc
+│       │   │   │   ├── analytics_data.py
+│       │   │   │   ├── chat_history.py
+│       │   │   │   ├── database.py
+│       │   │   │   ├── educational_resource.py
+│       │   │   │   ├── global_trends.py
+│       │   │   │   ├── goal.py
+│       │   │   │   ├── mood_entry.py
+│       │   │   │   ├── notifications.py
+│       │   │   │   ├── post.py
+│       │   │   │   ├── result.py
+│       │   │   │   ├── screen_time_data.py
+│       │   │   │   ├── settings.py
+│       │   │   │   ├── social_media_account.py
+│       │   │   │   └── user.py
 │       │   │   └── generator_request.py
 │       │   ├── pipeline_components
 │       │   │   ├── __init__.py
@@ -195,20 +328,16 @@
 │       │   │       │   ├── ollama_models.cpython-312.pyc
 │       │   │       │   └── openai_models.cpython-312.pyc
 │       │   │       ├── gemini_models.py
-│       │   │       ├── llama_inference.py
 │       │   │       ├── ollama_models.py
 │       │   │       └── openai_models.py
 │       │   ├── stages
 │       │   │   ├── __init__.py
 │       │   │   ├── generate_stage.py
 │       │   │   └── interaction_stage.py
-│       │   └── utils
-│       │       ├── __init__.py
-│       │       └── logging_utils.py
-│       ├── prompts
-│       │   ├── __init__.py
-│       │   ├── error_recovery.txt
-│       │   └── welcome_message.txt
+│       │   ├── utils
+│       │   │   ├── __init__.py
+│       │   │   └── logging_utils.py
+│       │   └── worker.py
 │       ├── scripts
 │       │   ├── __init__.py
 │       │   ├── clone_crds.py
@@ -239,7 +368,12 @@
 │           │   ├── test_ollama_models.cpython-312-pytest-7.4.4.pyc
 │           │   ├── test_ollama_models.cpython-312.pyc
 │           │   ├── test_openai_service.cpython-312-pytest-7.4.4.pyc
-│           │   └── test_rmq_handler.cpython-312-pytest-7.4.4.pyc
+│           │   ├── test_rmq_handler.cpython-312-pytest-7.4.4.pyc
+│           │   └── test_timeout.cpython-312-pytest-8.3.3.pyc
+│           ├── prompts
+│           │   ├── __init__.py
+│           │   ├── error_recovery.txt
+│           │   └── welcome_message.txt
 │           ├── test_ADC.py
 │           ├── test_gemini_models.py
 │           ├── test_gemini_service.py
@@ -247,7 +381,8 @@
 │           ├── test_manifest.py
 │           ├── test_ollama_models.py
 │           ├── test_openai_service.py
-│           └── test_rmq_handler.py
+│           ├── test_rmq_handler.py
+│           └── test_timeout.py
 ├── SocialWellnessApp
 │   ├── Package.resolved
 │   ├── SocialWellnessApp
@@ -419,4 +554,4 @@
 │           └── configure.swift
 └── tree.txt
 
-109 directories, 311 files
+115 directories, 440 files
