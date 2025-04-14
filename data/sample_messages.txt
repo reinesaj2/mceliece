@@ -1,0 +1,18 @@
+# Sample binary messages for McEliece examples
+# Each line could represent a message to be encoded.
+# Ensure the length matches the 'k' parameter used in key generation.
+
+# Example for k=2
+10
+01
+11
+
+# Example for k=3
+101
+011
+110
+
+# Example for k=4
+1001
+0110
+1111
